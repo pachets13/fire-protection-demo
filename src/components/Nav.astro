@@ -1,0 +1,101 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const navLinks = [
+  { label: 'About', href: `${base}/about` },
+  { label: 'Services', href: `${base}/services` },
+  { label: 'Contact', href: `${base}/contact` },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/5">
+  <nav class="max-w-7xl mx-auto px-6 flex items-center justify-between h-18" style="height: 72px;">
+
+    <!-- Logo -->
+    <a href={`${base}/`} class="flex-shrink-0">
+      <div class="bg-white rounded px-3 py-1.5 inline-flex items-center">
+        <img
+          src={`${base}/images/logo-dark.jpg`}
+          alt="Integrity Fire Protection"
+          class="h-9 w-auto"
+        />
+      </div>
+    </a>
+
+    <!-- Center nav links -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-xs font-semibold tracking-widest uppercase transition-colors duration-200',
+            currentPath.startsWith(link.href)
+              ? 'text-brand-orange'
+              : 'text-white/60 hover:text-white',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Right: phone + CTA -->
+    <div class="hidden md:flex items-center gap-6">
+      <a
+        href="tel:2045582533"
+        class="text-white/50 text-sm hover:text-white transition-colors duration-200"
+      >
+        (204) 558&#8209;2533
+      </a>
+      <a href={`${base}/contact`} class="btn-primary">Work With Us</a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-white/70 hover:text-white transition-colors p-1"
+      aria-label="Toggle navigation"
+    >
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-white/10">
+    <div class="px-6 py-6 flex flex-col gap-5">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-white/70 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-2 border-t border-white/10 flex flex-col gap-3">
+        <a href="tel:2045582533" class="text-white/50 text-sm">(204) 558-2533</a>
+        <a href={`${base}/contact`} class="btn-primary text-center">Work With Us</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', !isHidden);
+    iconOpen?.classList.toggle('hidden', !isHidden);
+    iconClose?.classList.toggle('hidden', isHidden);
+  });
+</script>

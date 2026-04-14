@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { services, inspectionSchedule } from '../data/services.js';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="Services"
+  description="Integrity Fire Protection offers 11 fire protection services in Winnipeg and Manitoba — sprinkler inspections, backflow testing, fire alarms, pumps, extinguishers, and more."
+>
+
+  <!-- ── PAGE HERO ─────────────────────────────────────────────── -->
+  <section class="relative pt-40 pb-24 overflow-hidden">
+    <div class="absolute inset-0" id="services-slideshow">
+      <img src={`${base}/images/slideshow-1.jpg`} alt="" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-100" data-hero-slide />
+      <img src={`${base}/images/slideshow-2.jpg`} alt="" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-0" data-hero-slide />
+      <img src={`${base}/images/slideshow-3.jpg`} alt="" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-0" data-hero-slide />
+      <img src={`${base}/images/slideshow-4.jpg`} alt="" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-0" data-hero-slide />
+      <img src={`${base}/images/slideshow-5.jpg`} alt="" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-0" data-hero-slide />
+      <div class="absolute inset-0 bg-brand-dark/80"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <span class="section-label mb-5 inline-block animate-on-scroll anim-fade" data-hero-i="0">Full-Spectrum Fire Protection</span>
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-tight max-w-4xl animate-on-scroll anim-fade" data-hero-i="1">
+        Services by Integrity Fire — Trusted Fire Protection.
+      </h1>
+      <p class="text-white/50 mt-6 text-lg max-w-2xl leading-relaxed animate-on-scroll anim-fade" data-hero-i="2">
+        From annual sprinkler inspections to backflow testing and fire pump service — we cover every system in your building.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── SERVICE CARDS ─────────────────────────────────────────── -->
+  <section class="bg-brand-dark py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-stagger>
+        {services.map((service) => (
+          <div class="bg-brand-dark-2 rounded-sm border border-white/5 overflow-hidden group hover:border-brand-orange/25 transition-colors duration-300 flex flex-col animate-on-scroll">
+
+            <!-- Service image -->
+            <div class="h-44 overflow-hidden bg-brand-dark">
+              <img
+                src={`${base}/images/${service.image}`}
+                alt={service.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            <!-- Card content -->
+            <div class="p-8 flex flex-col flex-1">
+
+              <!-- Top: title + standard badge -->
+              <div class="flex items-start justify-between gap-4 mb-4">
+                <h2 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors duration-300">
+                  {service.title}
+                </h2>
+                <span class="flex-shrink-0 text-brand-orange/60 text-xs font-semibold tracking-wide bg-brand-orange/10 px-2 py-1 rounded-sm">
+                  {service.standards}
+                </span>
+              </div>
+
+              <!-- Description -->
+              <p class="text-white/50 text-sm leading-relaxed mb-6 flex-1">
+                {service.description}
+              </p>
+
+              <!-- Footer: frequency + modal trigger -->
+              <div class="flex items-end justify-between gap-4 pt-4 border-t border-white/8">
+                <div>
+                  <p class="text-white/25 text-xs uppercase tracking-widest font-semibold mb-1">Frequency</p>
+                  <p class="text-white/60 text-xs">{service.frequency}</p>
+                </div>
+                <button
+                  data-youtube={service.youtubeUrl}
+                  class="flex-shrink-0 inline-flex items-center gap-1.5 text-brand-orange text-xs font-semibold tracking-widest uppercase hover:text-brand-orange-light transition-colors cursor-pointer"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Learn More
+                </button>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INSPECTION FREQUENCY REFERENCE ───────────────────────── -->
+  <section class="bg-brand-light py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-14 animate-on-scroll">
+          <span class="text-brand-orange uppercase text-xs font-semibold tracking-widest mb-4 inline-block">Quick Reference</span>
+          <h2 class="text-4xl font-black text-brand-dark mb-4">Inspection Frequency Schedule</h2>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            A complete reference for building managers. All frequencies are per NFPA 25 and applicable Canadian standards unless otherwise noted.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden animate-on-scroll">
+          {inspectionSchedule.map((row, i) => (
+            <div class:list={[
+              'flex items-center justify-between px-6 py-4 gap-6',
+              i !== inspectionSchedule.length - 1 ? 'border-b border-gray-100' : '',
+              i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50',
+            ]}>
+              <div class="flex items-center gap-3">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></div>
+                <span class="text-brand-dark text-sm">{row.item}</span>
+              </div>
+              <span class="flex-shrink-0 text-xs font-semibold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-sm">
+                {row.frequency}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-center text-gray-400 text-xs mt-6 leading-relaxed">
+          Not sure what your building requires? Call us at <a href="tel:2045582533" class="text-brand-orange hover:underline">(204) 558-2533</a> — we'll walk you through it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <section class="relative py-28 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src={`${base}/images/slideshow-3.jpg`}
+        alt="Integrity Fire Protection service fleet"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-brand-dark/90"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center animate-on-scroll anim-fade">
+      <span class="section-label mb-5 inline-block">Get Started</span>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Not sure what you need?</h2>
+      <p class="text-white/55 text-lg mb-10 leading-relaxed">
+        We'll help you figure out which systems require inspection and put together a plan that keeps you compliant without the guesswork.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`${base}/contact`} class="btn-primary px-8 py-4">Contact Us</a>
+        <a href="tel:2045582533" class="btn-outline px-8 py-4">(204) 558-2533</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── YOUTUBE MODAL ─────────────────────────────────────────── -->
+  <div
+    id="video-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-brand-dark/95 p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="relative w-full max-w-4xl">
+      <button
+        id="modal-close"
+        class="absolute -top-10 right-0 text-white/60 hover:text-white text-xs font-semibold tracking-widest uppercase flex items-center gap-2 transition-colors"
+        aria-label="Close video"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        Close
+      </button>
+      <div class="relative aspect-video bg-black rounded-sm overflow-hidden">
+        <iframe
+          id="modal-iframe"
+          src=""
+          class="absolute inset-0 w-full h-full"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script>
+  // ── Hero slideshow ──────────────────────────────────────────
+  const slideshowEl = document.getElementById('services-slideshow');
+  if (slideshowEl) {
+    const slides = Array.from(slideshowEl.querySelectorAll('[data-hero-slide]'));
+    if (slides.length > 1) {
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('opacity-100');
+        slides[current].classList.add('opacity-0');
+        current = (current + 1) % slides.length;
+        slides[current].classList.remove('opacity-0');
+        slides[current].classList.add('opacity-100');
+      }, 4000);
+    }
+  }
+
+  // ── YouTube modal ──────────────────────────────────────────
+  const modal = document.getElementById('video-modal');
+  const iframe = document.getElementById('modal-iframe');
+  const closeBtn = document.getElementById('modal-close');
+
+  function openModal(url) {
+    if (!modal || !iframe) return;
+    iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal || !iframe) return;
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-youtube]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.dataset.youtube;
+      if (url) openModal(url);
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>

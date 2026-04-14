@@ -1,0 +1,75 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const navLinks = [
+  { label: 'About', href: `${base}/about` },
+  { label: 'Services', href: `${base}/services` },
+  { label: 'Contact', href: `${base}/contact` },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-dark border-t border-white/8">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- Brand -->
+      <div class="space-y-4">
+        <a href={`${base}/`}>
+          <div class="bg-white rounded px-3 py-1.5 inline-flex items-center">
+            <img
+              src={`${base}/images/logo-dark.jpg`}
+              alt="Integrity Fire Protection"
+              class="h-9 w-auto"
+            />
+          </div>
+        </a>
+        <p class="text-white/40 text-sm leading-relaxed max-w-xs">
+          Protecting What Matters Most with Integrity and Expertise. Serving Winnipeg and surrounding Manitoba for 20+ years.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-brand-orange text-xs font-semibold tracking-widest uppercase transition-colors">Facebook</a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-white/30 hover:text-brand-orange text-xs font-semibold tracking-widest uppercase transition-colors">Instagram</a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-white/30 text-xs font-semibold tracking-widest uppercase mb-5">Navigation</h3>
+        <ul class="space-y-3">
+          {navLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-white/50 hover:text-white text-sm transition-colors duration-200">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <h3 class="text-white/30 text-xs font-semibold tracking-widest uppercase mb-5">Contact</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="tel:2045582533" class="text-white/50 hover:text-white transition-colors duration-200">
+              (204) 558-2533
+            </a>
+          </li>
+          <li class="text-white/50">Box 269, Garson, MB&nbsp;R0E&nbsp;0R0</li>
+          <li class="text-white/50">Mon–Fri &nbsp;8:00 AM – 5:00 PM</li>
+          <li class="text-white/30 text-xs pt-1">Closed weekends</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/8 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-white/25 text-xs">
+        &copy; {year} Integrity Fire Protection &mdash; All Rights Reserved.
+      </p>
+      <a href={`${base}/contact`} class="btn-primary">Work With Us</a>
+    </div>
+  </div>
+</footer>

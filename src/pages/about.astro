@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="About Us"
+  description="Integrity Fire Protection is a family-run fire protection company serving Winnipeg and Manitoba for 20+ years. Red Seal certified journeymen, City of Winnipeg licensed inspectors."
+>
+
+  <!-- ── PAGE HERO ─────────────────────────────────────────────── -->
+  <section class="relative pt-40 pb-24 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src={`${base}/images/about/about-us-hero.jpg`}
+        alt="Integrity Fire Protection team in the field"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-brand-dark/75"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <span class="section-label mb-5 inline-block animate-on-scroll anim-fade" data-hero-i="0">About Integrity Fire Protection</span>
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-tight max-w-3xl animate-on-scroll anim-fade" data-hero-i="1">
+        A family business built on a handshake.
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── STORY ─────────────────────────────────────────────────── -->
+  <section class="bg-brand-dark py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 items-center">
+
+        <div class="order-2 lg:order-1 animate-on-scroll anim-slide-left">
+          <span class="section-label mb-5 inline-block">Our Story</span>
+          <h2 class="text-4xl md:text-5xl font-black text-white mb-8 leading-tight">
+            20+ years of showing up and following through.
+          </h2>
+          <div class="space-y-5 text-white/55 leading-relaxed text-sm">
+            <p>
+              Integrity Fire Protection is a family-run business based in Garson, Manitoba — just east of Winnipeg. We've been keeping buildings fire-safe across the region for over two decades.
+            </p>
+            <p>
+              What drives us isn't paperwork or compliance checklists — it's knowing that when a sprinkler fires or a backflow fails, the work we did matters. We take that seriously.
+            </p>
+            <p>
+              Our name means something to us. If we say we'll be there, we'll be there. If we say the report will be ready Tuesday, it'll be ready Tuesday. That's just how we work.
+            </p>
+            <p>
+              We're committed to our community — to helping Winnipeg-area building managers and property owners stay safe and stay ahead of compliance requirements, without the runaround.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 animate-on-scroll anim-slide-right">
+          <div class="relative">
+            <img
+              src={`${base}/images/slideshow-5.jpg`}
+              alt="Integrity Fire Protection — the owners"
+              class="rounded-sm w-full object-cover aspect-square object-left"
+            />
+            <!-- Orange accent line -->
+            <div class="absolute -bottom-4 -left-4 w-24 h-1 bg-brand-orange"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUR COMMITMENT ────────────────────────────────────────── -->
+  <section class="bg-brand-dark-2 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-sm overflow-hidden" data-stagger>
+
+        <div class="bg-brand-dark-2 p-8 animate-on-scroll">
+          <div class="w-8 h-0.5 bg-brand-orange mb-6"></div>
+          <h3 class="text-white font-bold text-base mb-3">We follow through.</h3>
+          <p class="text-white/45 text-sm leading-relaxed">
+            When we commit to a date, a price, or a scope of work — we honour it. No surprises, no excuses.
+          </p>
+        </div>
+
+        <div class="bg-brand-dark-2 p-8 animate-on-scroll">
+          <div class="w-8 h-0.5 bg-brand-orange mb-6"></div>
+          <h3 class="text-white font-bold text-base mb-3">We're proactive.</h3>
+          <p class="text-white/45 text-sm leading-relaxed">
+            We flag issues before they become violations. Our clients hear from us before the city does.
+          </p>
+        </div>
+
+        <div class="bg-brand-dark-2 p-8 animate-on-scroll">
+          <div class="w-8 h-0.5 bg-brand-orange mb-6"></div>
+          <h3 class="text-white font-bold text-base mb-3">We're fast on paper.</h3>
+          <p class="text-white/45 text-sm leading-relaxed">
+            Inspection reports and invoicing turnaround quickly — because your time matters as much as the work itself.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE TEAM ──────────────────────────────────────────────── -->
+  <section class="bg-brand-dark py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="section-label mb-4 inline-block">The Crew</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">The people behind the work.</h2>
+        <p class="text-white/40 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          Our team of Red Seal certified journeymen and licensed inspectors brings decades of combined experience to every job.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-stagger>
+        <div class="overflow-hidden rounded-sm animate-on-scroll">
+          <img
+            src={`${base}/images/slideshow-1.jpg`}
+            alt="Integrity Fire Protection full team"
+            class="w-full object-cover aspect-video hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+        <div class="overflow-hidden rounded-sm animate-on-scroll">
+          <img
+            src={`${base}/images/slideshow-4.jpg`}
+            alt="Integrity Fire Protection technicians"
+            class="w-full object-cover aspect-video hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE FLEET ─────────────────────────────────────────────── -->
+  <section class="bg-brand-dark-2 py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div class="animate-on-scroll anim-slide-left">
+          <span class="section-label mb-5 inline-block">Our Fleet</span>
+          <h2 class="text-4xl font-black text-white mb-6">Equipped and ready across Manitoba.</h2>
+          <p class="text-white/50 leading-relaxed text-sm mb-6">
+            Our fully-stocked service vehicles keep us mobile across Winnipeg and surrounding areas, ready for inspections and service calls when you need them.
+          </p>
+          <a href={`${base}/contact`} class="btn-primary">Book an Inspection</a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 animate-on-scroll anim-slide-right">
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src={`${base}/images/slideshow-2.jpg`}
+              alt="Integrity Fire Protection fleet lineup"
+              class="w-full object-cover aspect-video hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src={`${base}/images/slideshow-3.jpg`}
+              alt="Integrity Fire Protection service vehicles"
+              class="w-full object-cover aspect-video hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <section class="bg-brand-orange py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-4 animate-on-scroll anim-fade">Ready to work together?</h2>
+      <p class="text-white/75 mb-10 text-lg animate-on-scroll anim-fade">Give us a call or send a message — we'll get back to you fast.</p>
+      <a
+        href={`${base}/contact`}
+        class="inline-block bg-white text-brand-orange font-bold px-10 py-4 rounded-sm hover:bg-brand-dark hover:text-white transition-colors duration-200 uppercase tracking-widest text-xs animate-on-scroll anim-fade"
+      >
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
