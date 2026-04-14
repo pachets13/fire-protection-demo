@@ -1,15 +1,27 @@
-# Integrity Fire Protection — CLAUDE.md
+# Shield Fire Protection — CLAUDE.md
 
 This is the master routing document. Start here to understand the project layout before touching any files.
 
 ---
 
+## Portfolio Demo Notice
+
+**This is a sanitized portfolio/demonstration version of a real client project.**
+
+- The business name, phone number, address, and email are all fictional. "Shield Fire Protection" is a placeholder — the real client is not named or identifiable in this repo.
+- The logo has been replaced with a text-based element.
+- All photos of people, vehicles, and real-world branding have been replaced with stock/generic images. No real client photos are present.
+- The Google Maps embed points to generic downtown Winnipeg coordinates — no business pin.
+- This repo exists solely to demonstrate design, code structure, and Astro/Tailwind implementation. It is not the live client site.
+
+---
+
 ## Project Overview
 
-**Client:** Integrity Fire Protection (integrityfireprotection.ca)
+**Demo name:** Shield Fire Protection (fictional)
 **Stack:** Astro + Tailwind CSS
 **Deploy target:** GitHub Pages (static export via `npm run build`)
-**Status:** In progress — all 4 pages built, contact form is decorative (no backend)
+**Status:** Complete — all 4 pages built, contact form is decorative (no backend)
 
 ---
 
@@ -18,7 +30,6 @@ This is the master routing document. Start here to understand the project layout
 ```
 /
 ├── CLAUDE.md                          ← You are here
-├── integrity-fire-protection-website-overview.md  ← Original site audit & content reference
 ├── astro.config.mjs                   ← Astro config (integrations, output mode)
 ├── tailwind.config.mjs                ← Brand colors, fonts, Tailwind setup
 ├── tsconfig.json                      ← TypeScript config (minimal, extends Astro base)
@@ -31,12 +42,12 @@ This is the master routing document. Start here to understand the project layout
 │
 ├── public/
 │   └── images/                        ← All static image assets served as-is
-│       ├── logo-dark.jpg              ← Brand logo (white background — handle with white container in dark nav)
-│       ├── slideshow-1.jpeg           ← Full team shot (5 people, van) — used as hero
-│       ├── slideshow-2.jpeg           ← Team with ladder rack + multiple vans — used in home CTA section
-│       ├── slideshow-3.jpeg           ← Fleet lineup (3 vehicles) — used in services CTA
-│       ├── slideshow-4.jpeg           ← Two technicians with tools — used in about team section
-│       └── slideshow-5.jpeg           ← Owners couple — used as about page story photo
+│       ├── logo-dark.jpg              ← Orphaned (no longer referenced — logo is now a text element)
+│       ├── slideshow-1.jpg            ← Stock/generic photo — used as hero slide 1, about team section
+│       ├── slideshow-2.jpg            ← Stock/generic photo — used as hero slide 2, home CTA, about fleet
+│       ├── slideshow-3.jpg            ← Stock/generic photo — used as hero slide 3, services CTA, about fleet
+│       ├── slideshow-4.jpg            ← Stock/generic photo — used as hero slide 4, about team section
+│       └── slideshow-5.jpg            ← Stock/generic photo — used as hero slide 5, about story section
 │
 └── src/
     ├── styles/
@@ -103,19 +114,21 @@ This is the master routing document. Start here to understand the project layout
 
 ## Key Decisions & Notes
 
-- **Logo:** Has a white background — always place inside a `bg-white rounded px-3 py-1.5` container on dark backgrounds.
-- **Contact form:** Decorative only — `type="button"` on submit, no `action` attribute. Wire up with Formspree or EmailJS when ready.
-- **YouTube links:** All service cards have `youtubeUrl: '#'` placeholder in `src/data/services.js` — update with real YouTube links.
-- **Social links:** Facebook and Instagram `href="#"` in Nav and Footer — update with real URLs.
-- **GitHub Pages deploy:** Configured for `https://pachets13.github.io/integrity-fire-protection`. If a custom domain is added later, remove `base` from `astro.config.mjs` and update `site`.
-- **Map:** Contact page has a placeholder div at the bottom — replace with a Google Maps embed `<iframe>`.
+- **Logo:** Replaced with a styled text element (`Shield Fire Protection` on brand-orange background) in Nav and Footer. The original `logo-dark.jpg` still exists in `public/images/` but is no longer referenced.
+- **Business info:** All fictional — name "Shield Fire Protection", phone `(204) 555-0100`, address `123 Main Street, Winnipeg, MB R3C 0A1`, email `info@shieldfireprotection.ca`.
+- **Photos:** `slideshow-1` through `slideshow-5` and `about/about-us-hero.jpg` are stock/generic images with no real client connection. Service card images in `public/images/services/` are technical reference photos, not client-specific.
+- **Contact form:** Decorative only — `type="button"` on submit, no `action` attribute.
+- **YouTube links:** All service cards have real YouTube embed URLs in `src/data/services.js` (generic fire protection demos, not client-produced).
+- **Social links:** Facebook and Instagram `href="#"` in Nav and Footer — not wired to any real account.
+- **Map:** Contact page embeds a generic Google Maps view of downtown Winnipeg — no business pin.
+- **GitHub Pages deploy:** Configured in `astro.config.mjs` — update `site` and `base` if deploying under a different repo name.
 
 ---
 
 ## How to Run Locally
 
 ```bash
-cd /Users/shawn/Desktop/Website-2
+cd /Users/shawn/Desktop/fire-protection-demo
 npm install
 npm run dev
 ```
