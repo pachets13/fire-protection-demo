@@ -10,7 +10,7 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/5">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/5">
   <nav class="max-w-7xl mx-auto px-6 flex items-center justify-between h-18" style="height: 72px;">
 
     <!-- Logo -->
@@ -26,10 +26,10 @@ const currentPath = Astro.url.pathname;
         <a
           href={link.href}
           class:list={[
-            'text-xs font-semibold tracking-widest uppercase transition-colors duration-200',
+            'nav-link text-xs font-semibold tracking-widest uppercase transition-colors duration-200',
             currentPath.startsWith(link.href)
               ? 'text-brand-orange'
-              : 'text-white/60 hover:text-white',
+              : 'text-white/60 hover:text-white nav-link-inactive',
           ]}
         >
           {link.label}
@@ -37,15 +37,9 @@ const currentPath = Astro.url.pathname;
       ))}
     </div>
 
-    <!-- Right: phone + CTA -->
-    <div class="hidden md:flex items-center gap-6">
-      <a
-        href="tel:2045550100"
-        class="text-white/50 text-sm hover:text-white transition-colors duration-200"
-      >
-        (204) 555&#8209;0100
-      </a>
-      <a href={`${base}/contact`} class="btn-primary">Work With Us</a>
+    <!-- Right: CTA -->
+    <div class="hidden md:flex items-center">
+      <a href={`${base}/contact`} class="btn-primary cta-pulse">Work With Us</a>
     </div>
 
     <!-- Mobile menu toggle -->
@@ -64,34 +58,113 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <!-- Mobile drawer -->
-  <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-white/10">
+  <div id="mobile-menu" class="md:hidden bg-brand-dark border-t border-white/10 overflow-hidden" style="max-height: 0; transition: max-height 0.35s ease;">
     <div class="px-6 py-6 flex flex-col gap-5">
       {navLinks.map(link => (
         <a
           href={link.href}
-          class="text-white/70 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
+          class="mobile-nav-link text-white/70 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
         >
           {link.label}
         </a>
       ))}
       <div class="pt-2 border-t border-white/10 flex flex-col gap-3">
         <a href="tel:2045550100" class="text-white/50 text-sm">(204) 555-0100</a>
-        <a href={`${base}/contact`} class="btn-primary text-center">Work With Us</a>
+        <a href={`${base}/contact`} class="btn-primary text-center mobile-nav-link">Work With Us</a>
       </div>
     </div>
   </div>
 </header>
 
+<!-- Mobile backdrop -->
+<div
+  id="nav-backdrop"
+  class="fixed inset-0 z-40 bg-brand-dark/60 backdrop-blur-sm md:hidden"
+  style="opacity: 0; pointer-events: none; transition: opacity 0.35s ease; top: 72px;"
+></div>
+
+<style>
+  /* ── Scroll state ─────────────────────────────────────────── */
+  #site-header {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  #site-header.is-scrolled {
+    background-color: #0F172A;
+    border-bottom-color: rgba(232, 114, 28, 0.35);
+  }
+
+  /* ── Nav link underline slide (inactive links only) ───────── */
+  .nav-link-inactive {
+    position: relative;
+  }
+  .nav-link-inactive::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #E8721C;
+    transition: width 0.25s ease;
+  }
+  .nav-link-inactive:hover::after {
+    width: 100%;
+  }
+
+  /* ── CTA attention pulse — fires once after 2s delay ─────── */
+  @keyframes ctaPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(232, 114, 28, 0.65); }
+    70%  { box-shadow: 0 0 0 10px rgba(232, 114, 28, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 114, 28, 0); }
+  }
+  .cta-pulse {
+    animation: ctaPulse 0.75s ease-out 2s 1;
+  }
+</style>
+
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('icon-open');
+  // ── Scroll opacity ─────────────────────────────────────────
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ── Mobile menu ────────────────────────────────────────────
+  const btn      = document.getElementById('mobile-menu-btn');
+  const menu     = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('nav-backdrop');
+  const iconOpen  = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
+  let menuOpen = false;
+
+  function openMenu() {
+    if (!menu || !backdrop) return;
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    backdrop.style.opacity = '1';
+    backdrop.style.pointerEvents = 'auto';
+    iconOpen?.classList.add('hidden');
+    iconClose?.classList.remove('hidden');
+    menuOpen = true;
+  }
+
+  function closeMenu() {
+    if (!menu || !backdrop) return;
+    menu.style.maxHeight = '0';
+    backdrop.style.opacity = '0';
+    backdrop.style.pointerEvents = 'none';
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+    menuOpen = false;
+  }
+
   btn?.addEventListener('click', () => {
-    const isHidden = menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden', !isHidden);
-    iconOpen?.classList.toggle('hidden', !isHidden);
-    iconClose?.classList.toggle('hidden', isHidden);
+    menuOpen ? closeMenu() : openMenu();
+  });
+
+  backdrop?.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 </script>
