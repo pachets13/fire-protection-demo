@@ -9,5 +9,5 @@ export default defineConfig({
   ],
   output: 'static',
   site: 'https://pachets13.github.io',
-  base: '/integrity-fire-protection',
+  base: '/fire-protection-demo',
 });
