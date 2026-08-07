@@ -1,0 +1,19 @@
+{
+  "name": "fire-protection-demo",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && bash scripts/deploy.sh",
+    "prebuild": "node scripts/check-anonymity.mjs",
+    "postbuild": "node scripts/check-anonymity.mjs --dist",
+    "test": "node scripts/test-anonymity-gate.mjs"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.15.0",
+    "tailwindcss": "^3.4.1"
+  }
+}

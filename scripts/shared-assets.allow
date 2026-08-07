@@ -1,0 +1,32 @@
+# shared-assets.allow — assets under public/ that are byte-identical to the
+# paired private original AND have been looked at and cleared.
+#
+# WHY THESE ARE LISTED RATHER THAN REPLACED
+# All 12 are technical equipment reference photos plus the favicon. None carries
+# a wordmark, a logo, a person, a vehicle or a building. They were shared with
+# the private original from the start because they are generic product imagery,
+# not the client's own photography — which is exactly the distinction the two
+# files deleted on 2026-08-07 failed:
+#
+#   the logo file      the real company's actual logo, with its name rendered
+#                      inside the image. DELETED, not allowlisted.
+#   a services photo   named the real client in its filename. DELETED.
+#
+# Both had been left in place as "orphaned (no longer referenced)". An
+# unreferenced file still serves at a guessable public URL. Not referenced is
+# not removed — so neither was allowlisted, both were deleted.
+#
+# A hash listed here is exempt FOREVER, so add one only after looking at the file.
+# Format:  <sha256>  <reason>
+a7c5c6fd3d93dbafe5b742d97b7d0a910e15981fe6f949f7400551e8e3b719b3  favicon flame glyph, no wordmark - favicon.png   (NOTE: still orange; predates the 2026-08-06 rehue to signal red)
+bca5d02127053748d12e513d3677151b7a143b206ea7cb50fabc0194ffe4bb0e  generic fire-equipment reference photo, no branding or people - backflow-valves.png
+88a4aa437c3a6c9ba7e3db4c7504b4c7a883d7d45c868107ce3895dde7af675f  generic fire-equipment reference photo, no branding or people - dry-systems.png
+2d08177d7815fc7c90f96ce42ce06cc9c227ae888e85cbe53e4702fe2361291a  generic fire-equipment reference photo, no branding or people - electric-diesel-firepumps.png
+252fbff5d8bfc4dc94e4d527b55a692ee84a94b46e89b130e36ecda49d91986f  generic fire-equipment reference photo, no branding or people - emergency-lighting-inspections.jpg
+8bcad4e49cb7b23c5fa2945c397845dfd5ac07012146f8374832a04641ff9f09  generic fire-equipment reference photo, no branding or people - fire-alarm-testing.jpg
+5e641c44d471c1338044dd4ca9e6b87e01b3a1510375cbf5dea79ecbbc65e1d1  generic fire-equipment reference photo, no branding or people - fire-damper-testing.jpg
+31cc1a56499169a106c81a03235af61cc49bcba3bf45eff09466a251b147ff05  generic fire-equipment reference photo, no branding or people - fire-extinguisher-inspections.jpg
+d26968cbf39368fa9675e3f755e6d22414e1dfadb7ddc0544cdc1d1b443a6b01  generic fire-equipment reference photo, no branding or people - foam-system.png
+ae99152b28cc5c1af10ee57b55a313a2e2551811174d5eb665727594705bf488  generic fire-equipment reference photo, no branding or people - hose-valve-inspections.jpg
+61d15d7277c1b35fa8b3ea8c0ff93a75fb0b60b1be2f1dd5ec5bde8bfcaf809e  generic fire-equipment reference photo, no branding or people - preaction-deluge.png
+23399ffcfd136dcbf27c899125b7246d08bc2c1532674d8d5e89e09f9b82bcd7  generic fire-equipment reference photo, no branding or people - wet-systems.png
