@@ -1,0 +1,1 @@
+import"./hoisted.BULIUBvA.js";const t=document.getElementById("hero-slideshow");if(t){const e=Array.from(t.querySelectorAll("[data-hero-slide]"));if(e.length>1){let s=0;setInterval(()=>{e[s].classList.remove("opacity-100"),e[s].classList.add("opacity-0"),s=(s+1)%e.length,e[s].classList.remove("opacity-0"),e[s].classList.add("opacity-100")},4e3)}}
